@@ -64,7 +64,6 @@ pipeline {
         
         }
         
-    
         post {
             always{
                 echo "I'll always say hello again"
