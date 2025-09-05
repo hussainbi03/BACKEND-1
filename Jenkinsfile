@@ -63,6 +63,7 @@ pipeline {
             
         
         }
+        
     
         post {
             always{
@@ -74,7 +75,9 @@ pipeline {
             failure {
                 echo "Pipeline is failed"
             }
+      }
         }
 }
+
 
     
