@@ -38,7 +38,7 @@ pipeline {
                     }
                 }
             }
-            stage ('deploy') {
+            stage ('docker build') {
                /*  input {
                     message "should we contunue?"
                     ok "yes, we can"
@@ -50,7 +50,7 @@ pipeline {
                 steps{
                     script {
                         sh """
-                            echo "Hello, this is deploy"
+                            docker build -t backend:1.0.0 .
                          """   
                     }
                 }
