@@ -29,25 +29,24 @@ pipeline {
                     }
                 }
             }
-            stage ('test') {
+            stage ('install dependencies') {
                 steps {
                     script {
                         sh """
-                            echo "Hello, this is test stage"
-                            echo " this is for $COMPONENT component"
+                            npm install
                          """   
                     }
                 }
             }
             stage ('deploy') {
-                input {
+               /*  input {
                     message "should we contunue?"
                     ok "yes, we can"
                     submitter "alice, bob"
-                }
-                when {
+                } */
+               /*  when {
                     environment name: 'DEPLOY_TO', value: 'production'
-                }
+                } */
                 steps{
                     script {
                         sh """
@@ -56,33 +55,8 @@ pipeline {
                     }
                 }
             }
-        stage('Parallel Stages') {
-            parallel {
-                stage('STAGE-1') {
-                    
-                    steps {
-                        script{
-                            sh """
-                                echo "Hello, this is STAGE-1"
-                                sleep 15
-                            """
-                        }
-                    }
-                }
-                stage('STAGE-2') {
-                    
-                    steps {
-                        script{
-                            sh """
-                                echo "Hello, this is STAGE-2"
-                                sleep 15
-                            """
-                        }
-                    }
-                }
-            }
+        
         }
-    }
     
         post {
             always{
